@@ -38,3 +38,8 @@ a communication channel between keyboard,screen and processes /dev/tty
 
 my responsibilities(as an executor)
 iterate commands,create pipes,fork,apply redirections,run execve or builtin functions,wait(),set exit status
+
+my thoughts about the shared structs:
+a struct that contains : char **argv (the commands and its arguments)
+and its redirections (another struct that contain the filename to open it and its type and there may be another redirection so we add a next pointer that point to the same struct (the redirection one))
+and finally a next pointer to the next commmand (of the command struct)
