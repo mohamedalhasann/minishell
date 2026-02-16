@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malhassa <malhassa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mohamed <mohamed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:45:18 by mohamed           #+#    #+#             */
-/*   Updated: 2026/02/15 17:12:51 by malhassa         ###   ########.fr       */
+/*   Updated: 2026/02/16 14:05:48 by mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,12 @@ typedef struct s_cmd
     t_redir		*redirs;
     struct s_cmd	*next;
 } 	t_cmd;
+
+typedef struct s_env
+{
+    char **envp;// i need it for access() and parser needs it for expanding
+    int last_exit_status;
+    t_cmd   *cmd_head; // the first command in the linked list
+}t_env;
 
 #endif
