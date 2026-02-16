@@ -6,7 +6,7 @@
 /*   By: malhassa <malhassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:45:04 by mohamed           #+#    #+#             */
-/*   Updated: 2026/02/15 17:42:36 by malhassa         ###   ########.fr       */
+/*   Updated: 2026/02/16 19:10:07 by malhassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int is_builtin(const char *s)
 int main(void)
 {
     char    *line;
-    t_cmd *pipeline;
+    int status;
+    t_env *pipeline;
 
     while(1)
     {
@@ -38,11 +39,10 @@ int main(void)
             printf("exit\n");
             break;
         }
-        // parser
-        // deciding if its builtin r not    
-        
-        printf("line %s is %d\n",line,is_builtin((line)));
-        
+        if (is_builtin(pipeline->cmd_head->argv[0]))
+            status = execute_builtin(pipeline->cmd_head,pipeline-);
+        else
+            status = execute_command(pipeline->cmd_head,pipeline->envp);
         free(line);
     }
     return (0);

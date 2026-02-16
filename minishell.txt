@@ -34,12 +34,23 @@ if external:
 what is a TTY?
 a communication channel between keyboard,screen and processes /dev/tty
 
+:::::
+Parent Process Flow
+|
+fork() -----> child process
+                    |
+                    execve to command
+                    |
+wait()   <-------   exit(status)
+|
+continue
+
+my approach for execution : 
+checking if the command sent is valid , and i found its path
+then checking redirections , if the struct of the redirection is null , then ill do a simple execution for a simple command function 
+
+applying redirection until there is somehting error like open() error, 
+or file not found
+i already did the find_command_path function, the next step is the actual execution
 
 
-my responsibilities(as an executor)
-iterate commands,create pipes,fork,apply redirections,run execve or builtin functions,wait(),set exit status
-
-my thoughts about the shared structs:
-a struct that contains : char **argv (the commands and its arguments)
-and its redirections (another struct that contain the filename to open it and its type and there may be another redirection so we add a next pointer that point to the same struct (the redirection one))
-and finally a next pointer to the next commmand (of the command struct)

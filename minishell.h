@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohamed <mohamed@student.42.fr>            +#+  +:+       +#+        */
+/*   By: malhassa <malhassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 18:45:18 by mohamed           #+#    #+#             */
-/*   Updated: 2026/02/16 14:05:48 by mohamed          ###   ########.fr       */
+/*   Updated: 2026/02/16 19:09:52 by malhassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@
 #include <stdio.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <stdlib.h>
 #include "libft/libft.h"
+
 
 typedef enum e_redir_type
 {
@@ -48,7 +51,11 @@ typedef struct s_env
 {
     char **envp;// i need it for access() and parser needs it for expanding
     int last_exit_status;
-    t_cmd   *cmd_head; // the first command in the linked list
+    t_cmd   *cmd_head;// the first command in the linked list
 }t_env;
 
+char	*find_command_path(char *path, char *cmd);
+char	*find_full_path(char *envp[]);
+int execute_command(t_cmd *cmd,char **envp);
+int execute_builtin(t_cmd *cmd, t_env *env);
 #endif
