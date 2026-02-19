@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testmain.c                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malhassa <malhassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/16 19:14:27 by malhassa          #+#    #+#             */
-/*   Updated: 2026/02/16 19:14:41 by malhassa         ###   ########.fr       */
+/*   Created: 2025/08/16 13:05:41 by malhassa          #+#    #+#             */
+/*   Updated: 2025/08/26 14:45:51 by malhassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include<stdio.h> 
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
 
-// chdir function is declared 
-// inside this header 
-#include<unistd.h> 
-int main() 
-{ 
-    char s[100]; 
-
-    // printing current working directory 
-    printf("%s\n", getcwd(s, 100)); 
-
-    // using the command 
-    chdir(".."); 
-
-    // printing current working directory 
-    printf("%s\n", getcwd(s, 100)); 
-
-    // after chdir is executed 
-    return 0; 
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }
+// int main(void)
+// {
+
+// }

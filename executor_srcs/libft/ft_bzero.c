@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_execution.c                                :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malhassa <malhassa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/16 19:09:18 by malhassa          #+#    #+#             */
-/*   Updated: 2026/02/16 19:13:34 by malhassa         ###   ########.fr       */
+/*   Created: 2025/08/14 17:28:53 by malhassa          #+#    #+#             */
+/*   Updated: 2025/08/26 14:42:59 by malhassa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int execute_cd(t_cmd *cmd, t_env *env)
+void	ft_bzero(void *s, size_t n)
 {
-    
+	while (n--)
+		*(char *)s++ = '\0';
 }
